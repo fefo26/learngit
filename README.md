@@ -1,1 +1,1 @@
-#this repository is ussed to learn git
+#this repository is used to learn git
