@@ -1,0 +1,96 @@
+#include<stdio.h>
+#include<string.h>
+
+/*
+fare inserire da tastiera il vettore entrate di 12 elementi di valori positivi che
+rappresentano l'incasso totale mensile di un ristorante
+fare inserire da tastiera il vettore uscite di 12 elementi di valori positivi che
+rappresentano l'incasso totale mensile di un ristorante
+
+Ricavare il vettore margine che per ogni mese rappresenta la differenza tra le entrate e le uscite
+Calcolare il totale delle entrate,delle uscite e del margine complessivo
+Calcolare il margine medio mensile
+indicare il mese con il margine massimo e il mese con il margine minimo*/
+
+
+int main(){
+    char *mesi[]={"Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"};
+    float entrate[12],uscite[12],margine[12],totentrate=0,totuscite=0,totmargine=0,avgmargine=0;
+    float maxentrate,minentrate,maxuscite,minuscite,maxmargine,minmargine;
+    char *mesemaxentrate[10],*mesemaxuscite[10],*meseminentrate[10],*meseminuscite[10],*mesemaxmargine[10],*meseminmargine[10];
+    
+    for(int i=0;i<12;++i){
+        printf("entrata di %s",mesi[i]);
+        scanf("%f",&entrate[i]);
+        if(i==0){
+            maxentrate=entrate[i];
+            minentrate=entrate[i];
+            *mesemaxentrate==mesi[i];
+            *meseminentrate==mesi[i];
+        }
+        if(entrate[i]>maxentrate){
+            maxentrate=entrate[i];
+            *mesemaxentrate==mesi[i];
+        }
+        if(entrate[i]<minentrate){
+            minentrate=entrate[i];
+            *meseminentrate==mesi[i];
+        }
+    }
+    
+    for(int i=0;i<12;++i){
+        printf("uscita di %s",mesi[i]);
+        scanf("%f",&uscite[i]);
+        if(i==0){
+            maxuscite=uscite[i];
+            minuscite=uscite[i];
+            *mesemaxuscite==mesi[i];
+            *meseminuscite==mesi[i];
+        }
+        if(uscite[i]>maxuscite){
+            maxuscite=uscite[i];
+            *mesemaxuscite==mesi[i];
+        }
+        if(uscite[i]<minuscite){
+            minuscite=uscite[i];
+            *meseminuscite==mesi[i];
+        }
+    }
+    
+    for(int i=0;i<12;++i){
+        margine[i]=entrate[i]-uscite[i];
+        totentrate+=entrate[i];
+        totuscite+=uscite[i];
+        totmargine+=margine[i];
+        if(i==0){
+            maxmargine=margine[i];
+            minmargine=margine[i];
+            *meseminmargine==mesi[i];
+            *mesemaxmargine==mesi[i];
+        }
+        if(margine[i]>maxmargine){
+            maxmargine=margine[i];
+            *mesemaxmargine==mesi[i];
+        }
+        if(margine[i]<minmargine){
+            minmargine=margine[i];
+            *meseminmargine==mesi[i];
+        }
+    }
+    avgmargine=totmargine/12.00;
+    
+    //ora creo la tabella
+    printf("\n\nMesi\tEntrate\t\tUscite\t\tMargine\n");
+    for(int i=0;i<12;++i){
+        printf("%s\t\t%6.2f\t\t%6.2f\t\t%6.2f\n",mesi[i],entrate[i],uscite[i],margine[i]);
+    }
+    printf("l'entrata massima è %6.2f nel mese di %s\n",maxentrate,*mesemaxentrate);
+    printf("l'entrata minima è %6.2f nel mese di %s\n",minuscite,*meseminentrate);
+    printf("l'uscita massima è %6.2f nel mese di %s\n",maxuscite,*mesemaxuscite);
+    printf("l'uscita minima è %6.2f nel mese di %s\n",minuscite,*meseminuscite);
+    printf("Il margine massimo è %6.2f nel mese di %s\n",maxmargine,*mesemaxmargine);
+    printf("Il margine minimo è %6.2f nel mese di %s\n",minmargine,*meseminmargine);
+    printf("il margine medio mensile è %6.2f\n",avgmargine);
+}
+    
+    
